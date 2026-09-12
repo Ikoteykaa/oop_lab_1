@@ -4,12 +4,12 @@ namespace oop_lab_1
 {
     internal class Video_games
     {
-        public string Name { get; set; }
-        public Game_genre Genre { get; set; }
-        public double Rating { get; set; }
-        public DateOnly Release_year { get; set; }
-        public double Price { get; set; }
-        private int Count_players { get; set; }
+        public string Name;
+        public Game_genre Genre;
+        public double Rating;
+        public DateOnly Release_year;
+        public double Price;
+        private int Count_players;
 
         public Video_games(string name, Game_genre genre, double rating, DateOnly release_year, double price)
         {
@@ -20,49 +20,32 @@ namespace oop_lab_1
             Price = price;
             Count_players = 0;
         }
-
+        public int GetPlayersCount()
+        {
+            return Count_players;
+        }
         public void StartGame()
         {
             Count_players++;
         }
 
-        public void ExitGame()
+        public bool ExitGame()
         {
             if (Count_players > 0)
             {
                 Count_players--;
+                return true; 
             }
-            else
-            {
-                Console.WriteLine("У грі немає активних гравців.");
-            }
+            return false;
         }
 
-        public void ChangeRating()
+        public void ChangeRating(double newRating)
         {
-            Console.WriteLine("Введіть новий рейтинг від 0 до 5:");
-
-            double newRating = double.Parse(Console.ReadLine());
 
             if (newRating >= 0 && newRating <= 5)
             {
                 Rating = newRating;
-                Console.WriteLine("Рейтинг змінено!");
             }
-            else
-            {
-                Console.WriteLine("Некоректний рейтинг!");
-            }
-        }
-
-        public void ShowInfo()
-        {
-            Console.WriteLine($"Назва гри: {Name}");
-            Console.WriteLine($"Жанр гри: {Genre}");
-            Console.WriteLine($"Рейтинг гри: {Rating}");
-            Console.WriteLine($"Дата релізу гри: {Release_year}");
-            Console.WriteLine($"Ціна: {Price}");
-            Console.WriteLine($"Кількість гравців: {Count_players}");
         }
     }
 }

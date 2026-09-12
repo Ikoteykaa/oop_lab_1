@@ -8,7 +8,7 @@ namespace oop_lab_1
 {
     internal enum Game_genre
     {
-        Action,
+        Action = 1,
         Adventure,
         RPG,
         Strategy,
