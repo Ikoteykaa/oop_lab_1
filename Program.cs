@@ -13,7 +13,6 @@ namespace oop_lab_1
             do
             {
                 Console.WriteLine("\nМЕНЮ");
-                Console.WriteLine("Оберіть дію:");
                 Console.WriteLine("1 - Додати гру");
                 Console.WriteLine("2 - Переглянути ігри");
                 Console.WriteLine("3 - Вийти");
@@ -36,6 +35,7 @@ namespace oop_lab_1
                             {
                                 games[gameCount] = game;
                                 gameCount++;
+
                                 Console.WriteLine("Гру успішно додано!");
                             }
                         }
@@ -53,18 +53,24 @@ namespace oop_lab_1
                             break;
                         }
 
-                        Console.WriteLine("\nСПИСОК ІГОР:");
+                        Console.WriteLine("\n========== СПИСОК ІГОР ==========");
 
                         for (int i = 0; i < gameCount; i++)
                         {
                             Console.WriteLine($"{i + 1} - {games[i].Name}");
                         }
 
+                        Console.WriteLine("0 - Повернутися до меню");
                         Console.Write("Оберіть гру: ");
 
                         if (!int.TryParse(Console.ReadLine(), out int gameChoice))
                         {
                             Console.WriteLine("Потрібно ввести число!");
+                            break;
+                        }
+
+                        if (gameChoice == 0)
+                        {
                             break;
                         }
 
