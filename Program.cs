@@ -88,7 +88,7 @@ namespace oop_lab_1
         }
 
 
-        // Метод додавання з валідацією
+    
         static Video_games AddGame()
         {
             Console.WriteLine("\n Додавання нової гри");
@@ -183,7 +183,7 @@ namespace oop_lab_1
                 return;
             }
 
-            Console.WriteLine("\n--- Пошук ---");
+            Console.WriteLine("\nПошук");
             Console.WriteLine("1 - За жанром");
             Console.WriteLine("2 - За роком випуску");
             Console.Write("Оберіть критерій: ");
@@ -280,7 +280,7 @@ namespace oop_lab_1
                                 Console.Write("Введіть новий рейтинг (0 - 5): ");
                                 if (double.TryParse(Console.ReadLine(), out double newRating) && newRating >= 0 && newRating <= 5)
                                 {
-                                    selectedGame.ChangeRating(newRating);
+                                    selectedGame.Rating = newRating;
                                     Console.WriteLine("Рейтинг успішно оновлено!");
                                 }
                                 else
@@ -308,7 +308,7 @@ namespace oop_lab_1
                 return count;
             }
 
-            Console.WriteLine("\n--- Видалення гри ---");
+            Console.WriteLine("\nВидалення гри");
             Console.WriteLine("1 - Видалити за номером у таблиці");
             Console.WriteLine("2 - Видалити всі ігри певного жанру");
             Console.WriteLine("0 - Відміна");
@@ -322,7 +322,7 @@ namespace oop_lab_1
                 Console.Write("\nВведіть номер гри для видалення: ");
                 if (int.TryParse(Console.ReadLine(), out int id) && id > 0 && id <= count)
                 {
-                    // Зсув масиву вліво
+ 
                     for (int i = id - 1; i < count - 1; i++)
                     {
                         games[i] = games[i + 1];
@@ -344,7 +344,7 @@ namespace oop_lab_1
                     Game_genre delGenre = (Game_genre)gChoice;
                     int initialCount = count;
 
-                    // Проходимо масив з кінця, щоб при видаленні та зсуві не збивалися індекси
+
                     for (int i = count - 1; i >= 0; i--)
                     {
                         if (games[i].Genre == delGenre)
@@ -365,10 +365,10 @@ namespace oop_lab_1
                 }
             }
 
-            return count; // Повертаємо нову кількість елементів у масиві
+            return count; 
         }
 
-        // Допоміжні методи для форматування таблиці під час пошуку
+
         static void PrintHeader()
         {
             Console.WriteLine(new string('-', 83));
