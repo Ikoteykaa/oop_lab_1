@@ -39,13 +39,5 @@ namespace oop_lab_1
             return false;
         }
 
-        public void ChangeRating(double newRating)
-        {
-
-            if (newRating >= 0 && newRating <= 5)
-            {
-                Rating = newRating;
-            }
-        }
     }
 }
