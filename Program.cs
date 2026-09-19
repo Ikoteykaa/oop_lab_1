@@ -19,7 +19,7 @@ namespace oop_lab_1
                 Console.WriteLine("Помилка! Введіть ціле додатне число.");
             }
 
-            Video_games[] games = new Video_games[N];
+            VideoGames[] games = new VideoGames[N];
             int gameCount = 0;
             int doChoice;
 
@@ -50,7 +50,7 @@ namespace oop_lab_1
                             break;
                         }
 
-                        Video_games newGame = AddGame();
+                        VideoGames newGame = AddGame();
                         if (newGame != null)
                         {
                             games[gameCount] = newGame;
@@ -89,7 +89,7 @@ namespace oop_lab_1
 
 
     
-        static Video_games AddGame()
+        static VideoGames AddGame()
         {
             Console.WriteLine("\n Додавання нової гри");
             string name = "";
@@ -104,13 +104,13 @@ namespace oop_lab_1
 
 
             Console.WriteLine("\nОберіть жанр гри: 1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator");
-            Game_genre genre;
+            GameGgenre genre;
             while (true)
             {
                 Console.Write("Ваш вибір (1-7): ");
                 if (int.TryParse(Console.ReadLine(), out int gChoice) && gChoice >= 1 && gChoice <= 7)
                 {
-                    genre = (Game_genre)gChoice;
+                    genre = (GameGgenre)gChoice;
                     break;
                 }
                 Console.WriteLine("Помилка! Оберіть число від 1 до 7.");
@@ -153,10 +153,10 @@ namespace oop_lab_1
                 Console.WriteLine("Помилка! Ціна повинна бути більшою за 0.");
             }
 
-            return new Video_games(name, genre, rating, releaseYear, price);
+            return new VideoGames(name, genre, rating, releaseYear, price);
         }
 
-        static void PrintGamesTable(Video_games[] games, int count)
+        static void PrintGamesTable(VideoGames[] games, int count)
         {
             if (count == 0)
             {
@@ -170,12 +170,12 @@ namespace oop_lab_1
 
             for (int i = 0; i < count; i++)
             {
-                Console.WriteLine($"| {i + 1,-2} | {games[i].Name,-20} | {games[i].Genre,-12} | {games[i].Rating,-7:F1} | {games[i].Release_year,-11} | {games[i].Price,-8:F2} | {games[i].GetPlayersCount(),-6} |");
+                Console.WriteLine($"| {i + 1,-2} | {games[i].Name,-20} | {games[i].Genre,-12} | {games[i].Rating,-7:F1} | {games[i].ReleaseYear,-11} | {games[i].Price,-8:F2} | {games[i].GetPlayersCount(),-6} |");
             }
             Console.WriteLine(new string('-', 83));
         }
 
-        static void SearchGames(Video_games[] games, int count)
+        static void SearchGames(VideoGames[] games, int count)
         {
             if (count == 0)
             {
@@ -197,7 +197,7 @@ namespace oop_lab_1
                 Console.WriteLine("Оберіть жанр (1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator): ");
                 if (int.TryParse(Console.ReadLine(), out int gChoice) && gChoice >= 1 && gChoice <= 7)
                 {
-                    Game_genre searchGenre = (Game_genre)gChoice;
+                    GameGgenre searchGenre = (GameGgenre)gChoice;
                     Console.WriteLine("\nРезультати пошуку:");
                     PrintHeader();
                     for (int i = 0; i < count; i++)
@@ -219,7 +219,7 @@ namespace oop_lab_1
                     PrintHeader();
                     for (int i = 0; i < count; i++)
                     {
-                        if (games[i].Release_year.Year == searchYear)
+                        if (games[i].ReleaseYear.Year == searchYear)
                         {
                             PrintRow(games[i], i);
                             found = true;
@@ -238,7 +238,7 @@ namespace oop_lab_1
         }
 
 
-        static void DemonstrateBehavior(Video_games[] games, int count)
+        static void DemonstrateBehavior(VideoGames[] games, int count)
         {
             if (count == 0)
             {
@@ -250,7 +250,7 @@ namespace oop_lab_1
             Console.Write("\nВведіть номер гри для взаємодії (або 0 для відміни): ");
             if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= count)
             {
-                Video_games selectedGame = games[index - 1];
+                VideoGames selectedGame = games[index - 1];
                 int subChoice = -1;
 
                 while (subChoice != 0)
@@ -300,7 +300,7 @@ namespace oop_lab_1
         }
 
 
-        static int DeleteGame(Video_games[] games, int count)
+        static int DeleteGame(VideoGames[] games, int count)
         {
             if (count == 0)
             {
@@ -341,7 +341,7 @@ namespace oop_lab_1
                 Console.WriteLine("Оберіть жанр (1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator): ");
                 if (int.TryParse(Console.ReadLine(), out int gChoice) && gChoice >= 1 && gChoice <= 7)
                 {
-                    Game_genre delGenre = (Game_genre)gChoice;
+                    GameGgenre delGenre = (GameGgenre)gChoice;
                     int initialCount = count;
 
 
@@ -376,9 +376,9 @@ namespace oop_lab_1
             Console.WriteLine(new string('-', 83));
         }
 
-        static void PrintRow(Video_games game, int originalIndex)
+        static void PrintRow(VideoGames game, int originalIndex)
         {
-            Console.WriteLine($"| {originalIndex + 1,-2} | {game.Name,-20} | {game.Genre,-12} | {game.Rating,-7:F1} | {game.Release_year,-11} | {game.Price,-8:F2} | {game.GetPlayersCount(),-6} |");
+            Console.WriteLine($"| {originalIndex + 1,-2} | {game.Name,-20} | {game.Genre,-12} | {game.Rating,-7:F1} | {game.ReleaseYear,-11} | {game.Price,-8:F2} | {game.GetPlayersCount(),-6} |");
         }
     }
 }

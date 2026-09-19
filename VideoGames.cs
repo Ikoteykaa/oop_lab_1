@@ -2,38 +2,38 @@
 
 namespace oop_lab_1
 {
-    internal class Video_games
+    internal class VideoGames
     {
         public string Name;
-        public Game_genre Genre;
+        public GameGgenre Genre;
         public double Rating;
-        public DateOnly Release_year;
+        public DateOnly ReleaseYear;
         public double Price;
-        private int Count_players;
+        private int CountPlayers;
 
-        public Video_games(string name, Game_genre genre, double rating, DateOnly release_year, double price)
+        public VideoGames(string name, GameGgenre genre, double rating, DateOnly release_year, double price)
         {
             Name = name;
             Genre = genre;
             Rating = rating;
-            Release_year = release_year;
+            ReleaseYear = release_year;
             Price = price;
-            Count_players = 0;
+            CountPlayers = 0;
         }
         public int GetPlayersCount()
         {
-            return Count_players;
+            return CountPlayers;
         }
         public void StartGame()
         {
-            Count_players++;
+            CountPlayers++;
         }
 
         public bool ExitGame()
         {
-            if (Count_players > 0)
+            if (CountPlayers > 0)
             {
-                Count_players--;
+                CountPlayers--;
                 return true; 
             }
             return false;
